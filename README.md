@@ -16,9 +16,9 @@ Minikube expone el LB para que el FE pueda conectarse al BE, ejecutar `minikube 
 
 LINK: https://github.com/fluxcd/helm-operator-get-started
 
-helm upgrade -i flux luisbattle/flux --wait \
+helm upgrade -i flux fluxcd/flux --wait \
 --namespace fluxcd \
---set git.url=git@github.com:luisbattle/helm-operator-get-started
+--set git.url=https://github.com/luisbattle/helm-charts.git
 
 Genera la ssh-key()
 kubectl -n fluxcd logs deployment/flux | grep identity.pub | cut -d '"' -f2

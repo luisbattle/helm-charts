@@ -3,10 +3,10 @@ kind: HelmRelease
 metadata:
   annotations:
     fluxcd.io/automated: "true"
-  name: helm-charts-2
-  namespace: fluxcd
+  name: backend-service
+  namespace: backend
 spec:
-  releaseName: helm-charts-2
+  releaseName: backend-service
   chart:
     git: https://github.com/luisbattle/helm-charts.git
     path: charts/backend_service
