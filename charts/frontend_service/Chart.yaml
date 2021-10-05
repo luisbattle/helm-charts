@@ -1,0 +1,6 @@
+name: frontend
+version: 0.0.1
+description: web-portal
+keywords:
+- web-portal
+engine: gotpl

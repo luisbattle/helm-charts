@@ -1,0 +1,18 @@
+release: "1.0.0"
+imagePullPolicy: Always
+termination: 60
+
+backend:
+  image: lbatalla/backend_service:stable
+  scaling:
+    enabled: true
+    min: 2
+    max: 6
+    cpuUsage: 85
+  resources:
+    limits:
+      cpu: 450m
+      memory: 1800Mi
+    requests:
+      cpu: 300m
+      memory: 1000Mi

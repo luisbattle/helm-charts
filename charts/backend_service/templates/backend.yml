@@ -1,0 +1,88 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: backend
+  namespace: backend
+  labels:
+    app: backend
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      annotations:
+        release: {{ .Values.release }}
+    spec:
+      containers:
+        - name: backend
+          image: {{ .Values.backend.image }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          ports:
+           - containerPort: 3000
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 600
+            periodSeconds: 10  
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: {{ .Values.backend.resources.limits.cpu }}
+              memory: {{ .Values.backend.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.backend.resources.requests.cpu }}
+              memory: {{ .Values.backend.resources.requests.memory }}
+      terminationGracePeriodSeconds: {{ .Values.termination }}
+
+---
+
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   labels:
+#     app: backend
+#   name: backend
+#   namespace: backend
+# spec:
+#   type: LoadBalancer
+#   ports:
+#     - name: http
+#       port: 3001
+#       targetPort: 3001
+#   selector:
+#     app: backend
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: backend
+  name: backend-svc
+  namespace: backend
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 3001
+      targetPort: 3000
+  selector:
+    app: backend
