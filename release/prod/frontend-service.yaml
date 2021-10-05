@@ -9,5 +9,5 @@ spec:
   releaseName: frontend-service
   chart:
     git: git@github.com:luisbattle/helm-charts.git
-    path: charts/frontendservice
+    path: charts/frontend_service
     ref: main
