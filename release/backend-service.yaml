@@ -8,6 +8,6 @@ metadata:
 spec:
   releaseName: backend-service
   chart:
-    git: https://github.com/luisbattle/helm-charts.git
+    git: git@github.com:luisbattle/helm-charts.git
     path: charts/backend_service
     ref: main
