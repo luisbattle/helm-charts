@@ -1,0 +1,15 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata: 
+  name: backend
+  labels: 
+    name: backend
+---
+
+kind: Namespace
+apiVersion: v1
+metadata: 
+  name: frontend
+  labels: 
+    name: frontend
