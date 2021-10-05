@@ -53,24 +53,6 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.termination }}
 
 ---
-
-# kind: Service
-# apiVersion: v1
-# metadata:
-#   labels:
-#     app: backend
-#   name: backend
-#   namespace: backend
-# spec:
-#   type: LoadBalancer
-#   ports:
-#     - name: http
-#       port: 3001
-#       targetPort: 3001
-#   selector:
-#     app: backend
-
----
 kind: Service
 apiVersion: v1
 metadata:
