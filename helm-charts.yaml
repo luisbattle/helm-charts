@@ -1,0 +1,18 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: helm-charts
+  namespace: fluxcd
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: helm-charts
+  chart:
+    git: git@github.com:luisbattle/helm-charts.git
+    path: charts/backend_service
+    ref: main
+  # values:
+  #   image:
+  #     repository: stefanprodan/podinfo
+  #     tag: dev-kb9lm91e
+  #   replicaCount: 1
