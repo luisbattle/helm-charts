@@ -1,0 +1,21 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: backend-service
+  namespace: fluxcd
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: helm-charts
+  helmVersion: v3
+  chart:
+    git: https://github.com/luisbattle/helm-charts.git
+    ref: main
+    path: charts/backend_service
+  # values:
+  #   debug: false
+  #   appLogLevel: INFO
+  #   environment: production
+  #   newRelic:
+  #     enabled: true

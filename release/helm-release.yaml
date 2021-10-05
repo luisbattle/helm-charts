@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  annotations:
+    fluxcd.io/automated: "true"
+  name: helm-charts-2
+  namespace: fluxcd
+spec:
+  releaseName: helm-charts-2
+  chart:
+    git: https://github.com/luisbattle/helm-charts.git
+    path: charts/backend_service
+    ref: main
