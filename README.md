@@ -19,8 +19,8 @@ LINK: https://github.com/fluxcd/helm-operator-get-started
 helm upgrade -i flux fluxcd/flux --wait \
 --namespace fluxcd \
 --set git.url=git@github.com:luisbattle/helm-charts.git \
---set git.path=init, release \
---set git.branch=main
+--set git.branch=main \
+--set git.path="release/prod\,init"
 
 Genera la ssh-key()
 kubectl -n fluxcd logs deployment/flux | grep identity.pub | cut -d '"' -f2
