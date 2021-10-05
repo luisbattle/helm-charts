@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  annotations:
+    fluxcd.io/automated: "true"
+  name: frontend-service
+  namespace: frontend
+spec:
+  releaseName: frontend-service
+  chart:
+    git: git@github.com:luisbattle/helm-charts.git
+    path: charts/frontendservice
+    ref: main
