@@ -4,7 +4,7 @@ metadata:
   name: backend-service
   namespace: backend
 spec:
-  interval: 1m
+  interval: 2m
   chart:
     spec:
       chart: charts/backend_service
@@ -12,4 +12,4 @@ spec:
         kind: GitRepository
         name: helm-charts
         namespace: flux-system
-      interval: 1m
+      interval: 2m

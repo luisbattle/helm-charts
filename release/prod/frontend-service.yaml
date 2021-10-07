@@ -1,18 +1,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: frontend
+  name: frontend-service
   namespace: frontend
 spec:
-  interval: 1m
+  interval: 2m
   chart:
     spec:
       chart: charts/frontend_service
       sourceRef:
         kind: GitRepository
         name: helm-charts
-        namespace: frontend
-      interval: 1m
+        namespace: flux-system
+      interval: 2m
 ---
 # apiVersion: helm.toolkit.fluxcd.io/v2beta1
 # kind: HelmRelease
