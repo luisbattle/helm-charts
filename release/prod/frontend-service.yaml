@@ -13,17 +13,3 @@ spec:
         name: helm-charts
         namespace: flux-system
       interval: 2m
----
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   annotations:
-#     fluxcd.io/automated: "true"
-#   name: frontend-service
-#   namespace: frontend
-# spec:
-#   releaseName: frontend-service
-#   chart:
-#     git: git@github.com:luisbattle/helm-charts.git
-#     path: charts/frontend_service
-#     ref: main
